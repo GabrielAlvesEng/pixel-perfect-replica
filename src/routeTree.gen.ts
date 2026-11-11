@@ -14,10 +14,12 @@ import { Route as AppRouteImport } from './routes/_app'
 import { Route as EstiloRouteImport } from './routes/estilo'
 import { Route as AppHomeRouteImport } from './routes/_app.home'
 import { Route as AppUsuariosRouteImport } from './routes/_app.usuarios'
-import { Route as AppEtapaEtapaRouteImport } from './routes/_app.etapa.$etapa'
 import { Route as AppEtapa1RouteImport } from './routes/_app.etapa.1'
 import { Route as AppEtapa2RouteImport } from './routes/_app.etapa.2'
 import { Route as AppEtapa3RouteImport } from './routes/_app.etapa.3'
+import { Route as AppEtapa4RouteImport } from './routes/_app.etapa.4'
+import { Route as AppEtapa5RouteImport } from './routes/_app.etapa.5'
+import { Route as AppEtapa6RouteImport } from './routes/_app.etapa.6'
 import { Route as AppEtapa7RouteImport } from './routes/_app.etapa.7'
 
 const IndexRoute = IndexRouteImport.update({
@@ -44,11 +46,6 @@ const AppUsuariosRoute = AppUsuariosRouteImport.update({
   path: '/usuarios',
   getParentRoute: () => AppRoute,
 } as any)
-const AppEtapaEtapaRoute = AppEtapaEtapaRouteImport.update({
-  id: '/etapa/$etapa',
-  path: '/etapa/$etapa',
-  getParentRoute: () => AppRoute,
-} as any)
 const AppEtapa1Route = AppEtapa1RouteImport.update({
   id: '/etapa/1',
   path: '/etapa/1',
@@ -64,6 +61,21 @@ const AppEtapa3Route = AppEtapa3RouteImport.update({
   path: '/etapa/3',
   getParentRoute: () => AppRoute,
 } as any)
+const AppEtapa4Route = AppEtapa4RouteImport.update({
+  id: '/etapa/4',
+  path: '/etapa/4',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppEtapa5Route = AppEtapa5RouteImport.update({
+  id: '/etapa/5',
+  path: '/etapa/5',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppEtapa6Route = AppEtapa6RouteImport.update({
+  id: '/etapa/6',
+  path: '/etapa/6',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppEtapa7Route = AppEtapa7RouteImport.update({
   id: '/etapa/7',
   path: '/etapa/7',
@@ -75,10 +87,12 @@ export interface FileRoutesByFullPath {
   '/estilo': typeof EstiloRoute
   '/home': typeof AppHomeRoute
   '/usuarios': typeof AppUsuariosRoute
-  '/etapa/$etapa': typeof AppEtapaEtapaRoute
   '/etapa/1': typeof AppEtapa1Route
   '/etapa/2': typeof AppEtapa2Route
   '/etapa/3': typeof AppEtapa3Route
+  '/etapa/4': typeof AppEtapa4Route
+  '/etapa/5': typeof AppEtapa5Route
+  '/etapa/6': typeof AppEtapa6Route
   '/etapa/7': typeof AppEtapa7Route
 }
 export interface FileRoutesByTo {
@@ -86,10 +100,12 @@ export interface FileRoutesByTo {
   '/estilo': typeof EstiloRoute
   '/home': typeof AppHomeRoute
   '/usuarios': typeof AppUsuariosRoute
-  '/etapa/$etapa': typeof AppEtapaEtapaRoute
   '/etapa/1': typeof AppEtapa1Route
   '/etapa/2': typeof AppEtapa2Route
   '/etapa/3': typeof AppEtapa3Route
+  '/etapa/4': typeof AppEtapa4Route
+  '/etapa/5': typeof AppEtapa5Route
+  '/etapa/6': typeof AppEtapa6Route
   '/etapa/7': typeof AppEtapa7Route
 }
 export interface FileRoutesById {
@@ -99,10 +115,12 @@ export interface FileRoutesById {
   '/estilo': typeof EstiloRoute
   '/_app/home': typeof AppHomeRoute
   '/_app/usuarios': typeof AppUsuariosRoute
-  '/_app/etapa/$etapa': typeof AppEtapaEtapaRoute
   '/_app/etapa/1': typeof AppEtapa1Route
   '/_app/etapa/2': typeof AppEtapa2Route
   '/_app/etapa/3': typeof AppEtapa3Route
+  '/_app/etapa/4': typeof AppEtapa4Route
+  '/_app/etapa/5': typeof AppEtapa5Route
+  '/_app/etapa/6': typeof AppEtapa6Route
   '/_app/etapa/7': typeof AppEtapa7Route
 }
 export interface FileRouteTypes {
@@ -112,10 +130,12 @@ export interface FileRouteTypes {
     | '/estilo'
     | '/home'
     | '/usuarios'
-    | '/etapa/$etapa'
     | '/etapa/1'
     | '/etapa/2'
     | '/etapa/3'
+    | '/etapa/4'
+    | '/etapa/5'
+    | '/etapa/6'
     | '/etapa/7'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -123,10 +143,12 @@ export interface FileRouteTypes {
     | '/estilo'
     | '/home'
     | '/usuarios'
-    | '/etapa/$etapa'
     | '/etapa/1'
     | '/etapa/2'
     | '/etapa/3'
+    | '/etapa/4'
+    | '/etapa/5'
+    | '/etapa/6'
     | '/etapa/7'
   id:
     | '__root__'
@@ -135,10 +157,12 @@ export interface FileRouteTypes {
     | '/estilo'
     | '/_app/home'
     | '/_app/usuarios'
-    | '/_app/etapa/$etapa'
     | '/_app/etapa/1'
     | '/_app/etapa/2'
     | '/_app/etapa/3'
+    | '/_app/etapa/4'
+    | '/_app/etapa/5'
+    | '/_app/etapa/6'
     | '/_app/etapa/7'
   fileRoutesById: FileRoutesById
 }
@@ -185,13 +209,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppUsuariosRouteImport
       parentRoute: typeof AppRoute
     }
-    '/_app/etapa/$etapa': {
-      id: '/_app/etapa/$etapa'
-      path: '/etapa/$etapa'
-      fullPath: '/etapa/$etapa'
-      preLoaderRoute: typeof AppEtapaEtapaRouteImport
-      parentRoute: typeof AppRoute
-    }
     '/_app/etapa/1': {
       id: '/_app/etapa/1'
       path: '/etapa/1'
@@ -213,6 +230,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppEtapa3RouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/etapa/4': {
+      id: '/_app/etapa/4'
+      path: '/etapa/4'
+      fullPath: '/etapa/4'
+      preLoaderRoute: typeof AppEtapa4RouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/etapa/5': {
+      id: '/_app/etapa/5'
+      path: '/etapa/5'
+      fullPath: '/etapa/5'
+      preLoaderRoute: typeof AppEtapa5RouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/etapa/6': {
+      id: '/_app/etapa/6'
+      path: '/etapa/6'
+      fullPath: '/etapa/6'
+      preLoaderRoute: typeof AppEtapa6RouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/etapa/7': {
       id: '/_app/etapa/7'
       path: '/etapa/7'
@@ -226,20 +264,24 @@ declare module '@tanstack/react-router' {
 interface AppRouteChildren {
   AppHomeRoute: typeof AppHomeRoute
   AppUsuariosRoute: typeof AppUsuariosRoute
-  AppEtapaEtapaRoute: typeof AppEtapaEtapaRoute
   AppEtapa1Route: typeof AppEtapa1Route
   AppEtapa2Route: typeof AppEtapa2Route
   AppEtapa3Route: typeof AppEtapa3Route
+  AppEtapa4Route: typeof AppEtapa4Route
+  AppEtapa5Route: typeof AppEtapa5Route
+  AppEtapa6Route: typeof AppEtapa6Route
   AppEtapa7Route: typeof AppEtapa7Route
 }
 
 const AppRouteChildren: AppRouteChildren = {
   AppHomeRoute: AppHomeRoute,
   AppUsuariosRoute: AppUsuariosRoute,
-  AppEtapaEtapaRoute: AppEtapaEtapaRoute,
   AppEtapa1Route: AppEtapa1Route,
   AppEtapa2Route: AppEtapa2Route,
   AppEtapa3Route: AppEtapa3Route,
+  AppEtapa4Route: AppEtapa4Route,
+  AppEtapa5Route: AppEtapa5Route,
+  AppEtapa6Route: AppEtapa6Route,
   AppEtapa7Route: AppEtapa7Route,
 }
 

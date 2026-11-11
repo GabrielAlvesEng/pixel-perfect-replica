@@ -13,9 +13,9 @@ const steps = [
   { n: "1", label: "Leitura da montagem", icon: FileSearch },
   { n: "2", label: "Árvore e quantidades", icon: GitBranch },
   { n: "3", label: "Comerciais e referências", icon: Layers },
-  { n: "4", label: "Lista de corte", icon: Scissors, locked: true },
-  { n: "5", label: "DXF das chapas", icon: FileBox, locked: true },
-  { n: "6", label: "Listas de materiais", icon: ListChecks, locked: true },
+  { n: "4", label: "Lista de corte", icon: Scissors },
+  { n: "5", label: "DXF das chapas", icon: FileBox },
+  { n: "6", label: "Listas de materiais", icon: ListChecks },
   { n: "7", label: "Relatório", icon: ClipboardCheck },
 ];
 
@@ -56,7 +56,7 @@ function AppLayout() {
                 <p className="truncate font-mono text-xs text-lilac">{active.code}</p>
                 <p className="mt-0.5 truncate text-[13px] text-white">{active.title1}</p>
               </div>
-              {steps.map((s) => <NavItem key={s.n} to={`/etapa/${s.n}`} num={s.n} icon={s.icon} locked={s.locked} active={pathname === `/etapa/${s.n}`}>{s.label}</NavItem>)}
+              {steps.map((s) => <NavItem key={s.n} to={`/etapa/${s.n}`} num={s.n} icon={s.icon} active={pathname === `/etapa/${s.n}`}>{s.label}</NavItem>)}
             </>
           ) : <p className="px-3 text-[13px] leading-relaxed text-sidebar-muted">Nenhum projeto aberto. Escolha um na Home.</p>}
           <p className="px-3 pb-2 pt-6 text-[10px] font-bold tracking-[0.14em] text-sidebar-muted">SISTEMA</p>

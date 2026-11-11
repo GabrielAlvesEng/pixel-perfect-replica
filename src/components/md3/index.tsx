@@ -37,7 +37,7 @@ export function Button({ variant = "filled", icon, size = "md", state = "idle", 
     <motion.button
       whileHover={disabled ? {} : { y: -1 }} whileTap={disabled ? {} : { scale: 0.96 }} transition={springs.bouncy}
       onClick={handle} disabled={disabled || state !== "idle"}
-      className={cn("group relative inline-flex select-none items-center justify-center gap-2 overflow-hidden rounded-full font-semibold transition-colors disabled:opacity-50",
+      className={cn("group relative inline-flex shrink-0 select-none items-center whitespace-nowrap justify-center gap-2 overflow-hidden rounded-full font-semibold transition-colors disabled:opacity-50",
         size === "md" ? "h-11 px-6 text-sm" : "h-9 px-4 text-[13px]", variantCls[variant], state !== "idle" && "disabled:opacity-100", className)}
       {...rest}>
       <span className="pointer-events-none absolute inset-0 bg-current opacity-0 transition-opacity group-hover:opacity-[0.08]" />

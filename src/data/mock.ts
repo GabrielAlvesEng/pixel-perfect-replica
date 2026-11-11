@@ -53,3 +53,53 @@ export const initialUsers: User[] = [
   { id: "u3", name: "Ana Paula Siqueira", username: "anapaula" },
 ];
 export const initials = (n: string) => n.split(" ").filter(Boolean).slice(0, 2).map((p) => p[0]).join("").toUpperCase();
+
+export interface CutItem { pos: string; profile: string; material: string; length: number; qty: number; kgm: number; status: Status }
+export const cutLists: { weld: string; title: string; items: CutItem[] }[] = [
+  { weld: "26-060-PGP-0A-02-001", title: "Quadro da porta", items: [
+    { pos: "01", profile: "Tubo quadrado 50×50×2,65", material: "SAE 1020", length: 2100, qty: 2, kgm: 3.93, status: "ok" },
+    { pos: "02", profile: "Tubo quadrado 50×50×2,65", material: "SAE 1020", length: 1060, qty: 2, kgm: 3.93, status: "ok" },
+    { pos: "03", profile: "Barra chata 1¼″×¼″", material: "ASTM A36", length: 980, qty: 3, kgm: 1.58, status: "aviso" },
+  ] },
+  { weld: "26-060-PGP-0A-02-002", title: "Batente", items: [
+    { pos: "01", profile: "Cantoneira 2″×3/16″", material: "ASTM A36", length: 2150, qty: 1, kgm: 3.63, status: "ok" },
+  ] },
+  { weld: "26-060-PGP-0B-01-001", title: "Coluna", items: [
+    { pos: "01", profile: "Perfil W 150×13", material: "ASTM A572 Gr50", length: 2400, qty: 1, kgm: 13.0, status: "ok" },
+    { pos: "02", profile: "Chapa base 200×200", material: "ASTM A36", length: 200, qty: 1, kgm: 15.7, status: "ok" },
+  ] },
+];
+
+export interface Sheet { code: string; name: string; w: number; h: number; qty: number; holes: number; shape: "rect" | "l" | "flange" | "gusset" }
+export const sheetGroups: { material: string; thickness: string; sheets: Sheet[] }[] = [
+  { material: "ASTM A36", thickness: "3,00 mm", sheets: [
+    { code: "26-060-PGP-0A-01-003", name: "Chapa de fechamento", w: 980, h: 620, qty: 6, holes: 4, shape: "rect" },
+    { code: "26-060-PGP-0A-02-004", name: "Reforço da porta", w: 420, h: 180, qty: 2, holes: 2, shape: "l" },
+  ] },
+  { material: "ASTM A36", thickness: "6,35 mm", sheets: [
+    { code: "26-060-PGP-0B-01-005", name: "Chapa base da coluna", w: 200, h: 200, qty: 4, holes: 4, shape: "flange" },
+    { code: "26-060-PGP-0B-01-006", name: "Mão-francesa", w: 150, h: 150, qty: 8, holes: 0, shape: "gusset" },
+  ] },
+  { material: "Inox AISI 304", thickness: "2,00 mm", sheets: [
+    { code: "26-060-PGP-0A-01-007", name: "Placa de identificação", w: 160, h: 90, qty: 2, holes: 4, shape: "rect" },
+  ] },
+];
+
+export interface Material { item: string; description: string; spec: string; unit: string; qty: number }
+export const materialLists: { assembly: string; title: string; items: Material[] }[] = [
+  { assembly: "26-060-PGP-0A-00-000", title: "Gradil lado A", items: [
+    { item: "PAR-SEX-M12x40", description: "Parafuso sextavado M12 × 40", spec: "Classe 8.8 zincado", unit: "pç", qty: 24 },
+    { item: "POR-SEX-M12", description: "Porca sextavada M12", spec: "Classe 8 zincada", unit: "pç", qty: 24 },
+    { item: "DOB-INOX-3", description: "Dobradiça industrial 3″", spec: "Inox 304", unit: "pç", qty: 3 },
+    { item: "FEC-MAG-01", description: "Fecho de segurança com sensor", spec: "Schmersal AZM", unit: "pç", qty: 1 },
+  ] },
+  { assembly: "26-060-PGP-0B-00-000", title: "Gradil lado B", items: [
+    { item: "PAR-SEX-M12x40", description: "Parafuso sextavado M12 × 40", spec: "Classe 8.8 zincado", unit: "pç", qty: 24 },
+    { item: "POR-SEX-M12", description: "Porca sextavada M12", spec: "Classe 8 zincada", unit: "pç", qty: 24 },
+    { item: "CHB-M16", description: "Chumbador químico M16", spec: "Hilti HAS-U", unit: "pç", qty: 16 },
+  ] },
+  { assembly: "26-060-PGP-00-00-000", title: "Montagem geral", items: [
+    { item: "WEG-W22-5CV", description: "Motor WEG W22 5 cv", spec: "4 polos, 220/380 V", unit: "pç", qty: 1 },
+    { item: "CIL-PN-63x200", description: "Cilindro pneumático Ø63 × 200", spec: "ISO 15552", unit: "pç", qty: 2 },
+  ] },
+];

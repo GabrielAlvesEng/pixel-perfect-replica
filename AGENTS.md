@@ -30,6 +30,6 @@ use the editor.
 <!-- LOVABLE:END -->
 
 ## Project rules
-- SolidAuto is a visual-only prototype: mock data in src/data/mock.ts and in-memory state in src/lib/app-store.tsx; no backend.
+- SolidAuto is a visual-only prototype (all 7 steps have their own screen): mock data in src/data/mock.ts and in-memory state in src/lib/app-store.tsx; no backend.
 - Theme tokens (colors, shapes, springs) live in src/lib/theme.ts and src/styles.css; shared MD3 components in src/components/md3 — reuse them instead of ad hoc styles.
 - Signed-in screens live under the pathless `_app` layout (black sidebar); framer-motion springs only allow two keyframes, use tweens for multi-keyframe animations.
