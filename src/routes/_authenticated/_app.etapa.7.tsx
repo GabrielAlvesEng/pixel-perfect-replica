@@ -8,7 +8,7 @@ import { pageHead } from "@/lib/head";
 import { springs } from "@/lib/theme";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/_app/etapa/7")({ head: pageHead("Relatório", "Etapa 7: verificações do projeto por severidade."), component: Report });
+export const Route = createFileRoute("/_authenticated/_app/etapa/7")({ head: pageHead("Relatório", "Etapa 7: verificações do projeto por severidade."), component: Report });
 
 const groups: { s: Status; label: string; icon: typeof AlertCircle; cls: string }[] = [
   { s: "erro", label: "Erros", icon: AlertCircle, cls: "bg-error-bg text-error" },

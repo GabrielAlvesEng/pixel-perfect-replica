@@ -124,3 +124,11 @@
   body { background-color: var(--color-background); color: var(--color-foreground); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
   :focus-visible { outline: 2px solid var(--color-ring); outline-offset: 2px; }
 }
+
+/* Cores fixas exigidas pelas marcas dos provedores de entrada (Google).
+   Não são cores do tema: a marca manda usar exatamente estes valores. */
+@theme {
+  --color-google-bg: #ffffff;
+  --color-google-border: #747775;
+  --color-google-text: #1f1f1f;
+}

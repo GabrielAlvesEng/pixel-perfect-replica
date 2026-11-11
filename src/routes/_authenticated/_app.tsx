@@ -1,13 +1,27 @@
 import { createFileRoute, Link, Outlet, useLocation, useNavigate } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
-import { FileSearch, GitBranch, Home, Layers, Lock, LogOut, Scissors, FileBox, ListChecks, ClipboardCheck, Users } from "lucide-react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  ClipboardCheck,
+  FileBox,
+  FileSearch,
+  GitBranch,
+  Home,
+  Layers,
+  ListChecks,
+  LogOut,
+  Scissors,
+  Users,
+} from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import { useApp } from "@/lib/app-store";
 import { logos } from "@/components/md3";
-import { initials } from "@/data/mock";
+import { initials } from "@/lib/types";
 import { fadeThrough, springs } from "@/lib/theme";
+import { meuPerfilQueryOptions, projetosQueryOptions } from "@/lib/solidauto.queries";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/_app")({ component: AppLayout });
+export const Route = createFileRoute("/_authenticated/_app")({ component: AppLayout });
 
 const steps = [
   { n: "1", label: "Leitura da montagem", icon: FileSearch },
@@ -19,24 +33,36 @@ const steps = [
   { n: "7", label: "Relatório", icon: ClipboardCheck },
 ];
 
-function NavItem({ to, active, icon: Icon, children, locked, num }: { to: string; active: boolean; icon: typeof Home; children: React.ReactNode; locked?: boolean | undefined; num?: string | undefined }) {
+function NavItem({ to, active, icon: Icon, children, num }: { to: string; active: boolean; icon: typeof Home; children: React.ReactNode; num?: string | undefined }) {
   return (
     <Link to={to} className={cn("relative flex h-10 items-center gap-3 rounded-full px-3 text-sm font-medium transition-colors",
-      active ? "text-white" : locked ? "text-sidebar-muted hover:bg-sidebar-hover" : "text-sidebar-foreground hover:bg-sidebar-hover")}>
+      active ? "text-white" : "text-sidebar-foreground hover:bg-sidebar-hover")}>
       {active && <motion.span layoutId="nav-pill" transition={springs.standard} className="absolute inset-0 rounded-full bg-sidebar-accent/25 shadow-[inset_0_0_0_1px_color-mix(in_oklab,var(--lilac)_50%,transparent)]" />}
       <motion.span key={String(active)} animate={active ? { scale: [1, 1.25, 1], y: [0, -2, 0] } : {}} transition={{ duration: 0.4, ease: "easeOut" }} className="relative">
         <Icon className={cn("size-[18px]", active && "text-lilac")} />
       </motion.span>
       <span className="relative flex-1 truncate">{num && <span className="mr-1.5 font-mono text-xs opacity-60">{num}.</span>}{children}</span>
-      {locked && <Lock className="relative size-3.5" />}
     </Link>
   );
 }
 
 function AppLayout() {
-  const { active, user } = useApp();
+  const { activeId, setActiveId } = useApp();
   const { pathname } = useLocation();
   const nav = useNavigate();
+  const queryClient = useQueryClient();
+  const { data: projects } = useQuery(projetosQueryOptions);
+  const { data: me } = useQuery(meuPerfilQueryOptions);
+  const active = projects?.find((p) => p.id === activeId) ?? null;
+
+  const sair = async () => {
+    await queryClient.cancelQueries();
+    queryClient.clear();
+    await supabase.auth.signOut();
+    setActiveId(null);
+    nav({ to: "/", replace: true });
+  };
+
   return (
     <div className="flex h-screen min-h-[660px]">
       <aside className="flex w-[260px] shrink-0 flex-col bg-sidebar px-4 py-5 text-sidebar-foreground">
@@ -63,9 +89,9 @@ function AppLayout() {
           <NavItem to="/usuarios" icon={Users} active={pathname === "/usuarios"}>Usuários</NavItem>
         </nav>
         <div className="mt-4 flex items-center gap-3 border-t border-sidebar-border px-2 pt-4">
-          <span className="grid size-9 place-items-center rounded-full bg-lilac text-xs font-bold text-white">{initials(user.name)}</span>
-          <div className="min-w-0 flex-1"><p className="truncate text-[13px] text-white">{user.name}</p><p className="truncate text-xs text-sidebar-muted">{user.username}</p></div>
-          <button onClick={() => nav({ to: "/" })} aria-label="Sair" title="Sair" className="grid size-9 place-items-center rounded-full hover:bg-sidebar-hover"><LogOut className="size-4" /></button>
+          <span className="grid size-9 place-items-center rounded-full bg-lilac text-xs font-bold text-white">{initials(me?.name ?? "?")}</span>
+          <div className="min-w-0 flex-1"><p className="truncate text-[13px] text-white">{me?.name ?? "…"}</p><p className="truncate text-xs text-sidebar-muted">{me?.username ?? ""}</p></div>
+          <button onClick={sair} aria-label="Sair" title="Sair" className="grid size-9 place-items-center rounded-full hover:bg-sidebar-hover"><LogOut className="size-4" /></button>
         </div>
       </aside>
       <main className="flex-1 overflow-y-auto bg-background">

@@ -8,7 +8,7 @@ import { initials } from "@/data/mock";
 import { pageHead } from "@/lib/head";
 import { springs } from "@/lib/theme";
 
-export const Route = createFileRoute("/_app/usuarios")({ head: pageHead("Usuários", "Quem pode entrar no SolidAuto."), component: UsersPage });
+export const Route = createFileRoute("/_authenticated/_app/usuarios")({ head: pageHead("Usuários", "Quem pode entrar no SolidAuto."), component: UsersPage });
 
 function UsersPage() {
   const { users, setUsers, user: me, toast } = useApp();

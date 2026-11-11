@@ -9,7 +9,7 @@ import { pageHead } from "@/lib/head";
 import { springs } from "@/lib/theme";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/_app/etapa/6")({ head: pageHead("Listas de materiais", "Etapa 6: listas de compra em Excel por submontagem."), component: Step6 });
+export const Route = createFileRoute("/_authenticated/_app/etapa/6")({ head: pageHead("Listas de materiais", "Etapa 6: listas de compra em Excel por submontagem."), component: Step6 });
 
 const cols = "grid grid-cols-[170px_1.5fr_1fr_60px_80px] items-center gap-3";
 

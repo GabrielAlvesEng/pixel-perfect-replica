@@ -10,25 +10,27 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AppRouteImport } from './routes/_app'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as EstiloRouteImport } from './routes/estilo'
-import { Route as AppHomeRouteImport } from './routes/_app.home'
-import { Route as AppUsuariosRouteImport } from './routes/_app.usuarios'
-import { Route as AppEtapa1RouteImport } from './routes/_app.etapa.1'
-import { Route as AppEtapa2RouteImport } from './routes/_app.etapa.2'
-import { Route as AppEtapa3RouteImport } from './routes/_app.etapa.3'
-import { Route as AppEtapa4RouteImport } from './routes/_app.etapa.4'
-import { Route as AppEtapa5RouteImport } from './routes/_app.etapa.5'
-import { Route as AppEtapa6RouteImport } from './routes/_app.etapa.6'
-import { Route as AppEtapa7RouteImport } from './routes/_app.etapa.7'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as AuthenticatedAppRouteImport } from './routes/_authenticated/_app'
+import { Route as AuthenticatedAppHomeRouteImport } from './routes/_authenticated/_app.home'
+import { Route as AuthenticatedAppUsuariosRouteImport } from './routes/_authenticated/_app.usuarios'
+import { Route as AuthenticatedAppEtapa1RouteImport } from './routes/_authenticated/_app.etapa.1'
+import { Route as AuthenticatedAppEtapa2RouteImport } from './routes/_authenticated/_app.etapa.2'
+import { Route as AuthenticatedAppEtapa3RouteImport } from './routes/_authenticated/_app.etapa.3'
+import { Route as AuthenticatedAppEtapa4RouteImport } from './routes/_authenticated/_app.etapa.4'
+import { Route as AuthenticatedAppEtapa5RouteImport } from './routes/_authenticated/_app.etapa.5'
+import { Route as AuthenticatedAppEtapa6RouteImport } from './routes/_authenticated/_app.etapa.6'
+import { Route as AuthenticatedAppEtapa7RouteImport } from './routes/_authenticated/_app.etapa.7'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AppRoute = AppRouteImport.update({
-  id: '/_app',
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EstiloRoute = EstiloRouteImport.update({
@@ -36,98 +38,113 @@ const EstiloRoute = EstiloRouteImport.update({
   path: '/estilo',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AppHomeRoute = AppHomeRouteImport.update({
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAppRoute = AuthenticatedAppRouteImport.update({
+  id: '/_app',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAppHomeRoute = AuthenticatedAppHomeRouteImport.update({
   id: '/home',
   path: '/home',
-  getParentRoute: () => AppRoute,
+  getParentRoute: () => AuthenticatedAppRoute,
 } as any)
-const AppUsuariosRoute = AppUsuariosRouteImport.update({
-  id: '/usuarios',
-  path: '/usuarios',
-  getParentRoute: () => AppRoute,
-} as any)
-const AppEtapa1Route = AppEtapa1RouteImport.update({
+const AuthenticatedAppUsuariosRoute =
+  AuthenticatedAppUsuariosRouteImport.update({
+    id: '/usuarios',
+    path: '/usuarios',
+    getParentRoute: () => AuthenticatedAppRoute,
+  } as any)
+const AuthenticatedAppEtapa1Route = AuthenticatedAppEtapa1RouteImport.update({
   id: '/etapa/1',
   path: '/etapa/1',
-  getParentRoute: () => AppRoute,
+  getParentRoute: () => AuthenticatedAppRoute,
 } as any)
-const AppEtapa2Route = AppEtapa2RouteImport.update({
+const AuthenticatedAppEtapa2Route = AuthenticatedAppEtapa2RouteImport.update({
   id: '/etapa/2',
   path: '/etapa/2',
-  getParentRoute: () => AppRoute,
+  getParentRoute: () => AuthenticatedAppRoute,
 } as any)
-const AppEtapa3Route = AppEtapa3RouteImport.update({
+const AuthenticatedAppEtapa3Route = AuthenticatedAppEtapa3RouteImport.update({
   id: '/etapa/3',
   path: '/etapa/3',
-  getParentRoute: () => AppRoute,
+  getParentRoute: () => AuthenticatedAppRoute,
 } as any)
-const AppEtapa4Route = AppEtapa4RouteImport.update({
+const AuthenticatedAppEtapa4Route = AuthenticatedAppEtapa4RouteImport.update({
   id: '/etapa/4',
   path: '/etapa/4',
-  getParentRoute: () => AppRoute,
+  getParentRoute: () => AuthenticatedAppRoute,
 } as any)
-const AppEtapa5Route = AppEtapa5RouteImport.update({
+const AuthenticatedAppEtapa5Route = AuthenticatedAppEtapa5RouteImport.update({
   id: '/etapa/5',
   path: '/etapa/5',
-  getParentRoute: () => AppRoute,
+  getParentRoute: () => AuthenticatedAppRoute,
 } as any)
-const AppEtapa6Route = AppEtapa6RouteImport.update({
+const AuthenticatedAppEtapa6Route = AuthenticatedAppEtapa6RouteImport.update({
   id: '/etapa/6',
   path: '/etapa/6',
-  getParentRoute: () => AppRoute,
+  getParentRoute: () => AuthenticatedAppRoute,
 } as any)
-const AppEtapa7Route = AppEtapa7RouteImport.update({
+const AuthenticatedAppEtapa7Route = AuthenticatedAppEtapa7RouteImport.update({
   id: '/etapa/7',
   path: '/etapa/7',
-  getParentRoute: () => AppRoute,
+  getParentRoute: () => AuthenticatedAppRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/estilo': typeof EstiloRoute
-  '/home': typeof AppHomeRoute
-  '/usuarios': typeof AppUsuariosRoute
-  '/etapa/1': typeof AppEtapa1Route
-  '/etapa/2': typeof AppEtapa2Route
-  '/etapa/3': typeof AppEtapa3Route
-  '/etapa/4': typeof AppEtapa4Route
-  '/etapa/5': typeof AppEtapa5Route
-  '/etapa/6': typeof AppEtapa6Route
-  '/etapa/7': typeof AppEtapa7Route
+  '/reset-password': typeof ResetPasswordRoute
+  '/home': typeof AuthenticatedAppHomeRoute
+  '/usuarios': typeof AuthenticatedAppUsuariosRoute
+  '/etapa/1': typeof AuthenticatedAppEtapa1Route
+  '/etapa/2': typeof AuthenticatedAppEtapa2Route
+  '/etapa/3': typeof AuthenticatedAppEtapa3Route
+  '/etapa/4': typeof AuthenticatedAppEtapa4Route
+  '/etapa/5': typeof AuthenticatedAppEtapa5Route
+  '/etapa/6': typeof AuthenticatedAppEtapa6Route
+  '/etapa/7': typeof AuthenticatedAppEtapa7Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/estilo': typeof EstiloRoute
-  '/home': typeof AppHomeRoute
-  '/usuarios': typeof AppUsuariosRoute
-  '/etapa/1': typeof AppEtapa1Route
-  '/etapa/2': typeof AppEtapa2Route
-  '/etapa/3': typeof AppEtapa3Route
-  '/etapa/4': typeof AppEtapa4Route
-  '/etapa/5': typeof AppEtapa5Route
-  '/etapa/6': typeof AppEtapa6Route
-  '/etapa/7': typeof AppEtapa7Route
+  '/reset-password': typeof ResetPasswordRoute
+  '/home': typeof AuthenticatedAppHomeRoute
+  '/usuarios': typeof AuthenticatedAppUsuariosRoute
+  '/etapa/1': typeof AuthenticatedAppEtapa1Route
+  '/etapa/2': typeof AuthenticatedAppEtapa2Route
+  '/etapa/3': typeof AuthenticatedAppEtapa3Route
+  '/etapa/4': typeof AuthenticatedAppEtapa4Route
+  '/etapa/5': typeof AuthenticatedAppEtapa5Route
+  '/etapa/6': typeof AuthenticatedAppEtapa6Route
+  '/etapa/7': typeof AuthenticatedAppEtapa7Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/_app': typeof AppRouteWithChildren
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/estilo': typeof EstiloRoute
-  '/_app/home': typeof AppHomeRoute
-  '/_app/usuarios': typeof AppUsuariosRoute
-  '/_app/etapa/1': typeof AppEtapa1Route
-  '/_app/etapa/2': typeof AppEtapa2Route
-  '/_app/etapa/3': typeof AppEtapa3Route
-  '/_app/etapa/4': typeof AppEtapa4Route
-  '/_app/etapa/5': typeof AppEtapa5Route
-  '/_app/etapa/6': typeof AppEtapa6Route
-  '/_app/etapa/7': typeof AppEtapa7Route
+  '/reset-password': typeof ResetPasswordRoute
+  '/_authenticated/_app': typeof AuthenticatedAppRouteWithChildren
+  '/_authenticated/_app/home': typeof AuthenticatedAppHomeRoute
+  '/_authenticated/_app/usuarios': typeof AuthenticatedAppUsuariosRoute
+  '/_authenticated/_app/etapa/1': typeof AuthenticatedAppEtapa1Route
+  '/_authenticated/_app/etapa/2': typeof AuthenticatedAppEtapa2Route
+  '/_authenticated/_app/etapa/3': typeof AuthenticatedAppEtapa3Route
+  '/_authenticated/_app/etapa/4': typeof AuthenticatedAppEtapa4Route
+  '/_authenticated/_app/etapa/5': typeof AuthenticatedAppEtapa5Route
+  '/_authenticated/_app/etapa/6': typeof AuthenticatedAppEtapa6Route
+  '/_authenticated/_app/etapa/7': typeof AuthenticatedAppEtapa7Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/estilo'
+    | '/reset-password'
     | '/home'
     | '/usuarios'
     | '/etapa/1'
@@ -141,6 +158,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/estilo'
+    | '/reset-password'
     | '/home'
     | '/usuarios'
     | '/etapa/1'
@@ -153,23 +171,26 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/_app'
+    | '/_authenticated'
     | '/estilo'
-    | '/_app/home'
-    | '/_app/usuarios'
-    | '/_app/etapa/1'
-    | '/_app/etapa/2'
-    | '/_app/etapa/3'
-    | '/_app/etapa/4'
-    | '/_app/etapa/5'
-    | '/_app/etapa/6'
-    | '/_app/etapa/7'
+    | '/reset-password'
+    | '/_authenticated/_app'
+    | '/_authenticated/_app/home'
+    | '/_authenticated/_app/usuarios'
+    | '/_authenticated/_app/etapa/1'
+    | '/_authenticated/_app/etapa/2'
+    | '/_authenticated/_app/etapa/3'
+    | '/_authenticated/_app/etapa/4'
+    | '/_authenticated/_app/etapa/5'
+    | '/_authenticated/_app/etapa/6'
+    | '/_authenticated/_app/etapa/7'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AppRoute: typeof AppRouteWithChildren
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   EstiloRoute: typeof EstiloRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -181,11 +202,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_app': {
-      id: '/_app'
+    '/_authenticated': {
+      id: '/_authenticated'
       path: ''
       fullPath: '/'
-      preLoaderRoute: typeof AppRouteImport
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/estilo': {
@@ -195,102 +216,129 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EstiloRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_app/home': {
-      id: '/_app/home'
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/_app': {
+      id: '/_authenticated/_app'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedAppRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/_app/home': {
+      id: '/_authenticated/_app/home'
       path: '/home'
       fullPath: '/home'
-      preLoaderRoute: typeof AppHomeRouteImport
-      parentRoute: typeof AppRoute
+      preLoaderRoute: typeof AuthenticatedAppHomeRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
     }
-    '/_app/usuarios': {
-      id: '/_app/usuarios'
+    '/_authenticated/_app/usuarios': {
+      id: '/_authenticated/_app/usuarios'
       path: '/usuarios'
       fullPath: '/usuarios'
-      preLoaderRoute: typeof AppUsuariosRouteImport
-      parentRoute: typeof AppRoute
+      preLoaderRoute: typeof AuthenticatedAppUsuariosRouteImport
+      parentRoute: typeof AuthenticatedAppRoute
     }
-    '/_app/etapa/1': {
-      id: '/_app/etapa/1'
+    '/_authenticated/_app/etapa/1': {
+      id: '/_authenticated/_app/etapa/1'
       path: '/etapa/1'
       fullPath: '/etapa/1'
-      preLoaderRoute: typeof AppEtapa1RouteImport
-      parentRoute: typeof AppRoute
+      preLoaderRoute: typeof AuthenticatedAppEtapa1RouteImport
+      parentRoute: typeof AuthenticatedAppRoute
     }
-    '/_app/etapa/2': {
-      id: '/_app/etapa/2'
+    '/_authenticated/_app/etapa/2': {
+      id: '/_authenticated/_app/etapa/2'
       path: '/etapa/2'
       fullPath: '/etapa/2'
-      preLoaderRoute: typeof AppEtapa2RouteImport
-      parentRoute: typeof AppRoute
+      preLoaderRoute: typeof AuthenticatedAppEtapa2RouteImport
+      parentRoute: typeof AuthenticatedAppRoute
     }
-    '/_app/etapa/3': {
-      id: '/_app/etapa/3'
+    '/_authenticated/_app/etapa/3': {
+      id: '/_authenticated/_app/etapa/3'
       path: '/etapa/3'
       fullPath: '/etapa/3'
-      preLoaderRoute: typeof AppEtapa3RouteImport
-      parentRoute: typeof AppRoute
+      preLoaderRoute: typeof AuthenticatedAppEtapa3RouteImport
+      parentRoute: typeof AuthenticatedAppRoute
     }
-    '/_app/etapa/4': {
-      id: '/_app/etapa/4'
+    '/_authenticated/_app/etapa/4': {
+      id: '/_authenticated/_app/etapa/4'
       path: '/etapa/4'
       fullPath: '/etapa/4'
-      preLoaderRoute: typeof AppEtapa4RouteImport
-      parentRoute: typeof AppRoute
+      preLoaderRoute: typeof AuthenticatedAppEtapa4RouteImport
+      parentRoute: typeof AuthenticatedAppRoute
     }
-    '/_app/etapa/5': {
-      id: '/_app/etapa/5'
+    '/_authenticated/_app/etapa/5': {
+      id: '/_authenticated/_app/etapa/5'
       path: '/etapa/5'
       fullPath: '/etapa/5'
-      preLoaderRoute: typeof AppEtapa5RouteImport
-      parentRoute: typeof AppRoute
+      preLoaderRoute: typeof AuthenticatedAppEtapa5RouteImport
+      parentRoute: typeof AuthenticatedAppRoute
     }
-    '/_app/etapa/6': {
-      id: '/_app/etapa/6'
+    '/_authenticated/_app/etapa/6': {
+      id: '/_authenticated/_app/etapa/6'
       path: '/etapa/6'
       fullPath: '/etapa/6'
-      preLoaderRoute: typeof AppEtapa6RouteImport
-      parentRoute: typeof AppRoute
+      preLoaderRoute: typeof AuthenticatedAppEtapa6RouteImport
+      parentRoute: typeof AuthenticatedAppRoute
     }
-    '/_app/etapa/7': {
-      id: '/_app/etapa/7'
+    '/_authenticated/_app/etapa/7': {
+      id: '/_authenticated/_app/etapa/7'
       path: '/etapa/7'
       fullPath: '/etapa/7'
-      preLoaderRoute: typeof AppEtapa7RouteImport
-      parentRoute: typeof AppRoute
+      preLoaderRoute: typeof AuthenticatedAppEtapa7RouteImport
+      parentRoute: typeof AuthenticatedAppRoute
     }
   }
 }
 
-interface AppRouteChildren {
-  AppHomeRoute: typeof AppHomeRoute
-  AppUsuariosRoute: typeof AppUsuariosRoute
-  AppEtapa1Route: typeof AppEtapa1Route
-  AppEtapa2Route: typeof AppEtapa2Route
-  AppEtapa3Route: typeof AppEtapa3Route
-  AppEtapa4Route: typeof AppEtapa4Route
-  AppEtapa5Route: typeof AppEtapa5Route
-  AppEtapa6Route: typeof AppEtapa6Route
-  AppEtapa7Route: typeof AppEtapa7Route
+interface AuthenticatedAppRouteChildren {
+  AuthenticatedAppHomeRoute: typeof AuthenticatedAppHomeRoute
+  AuthenticatedAppUsuariosRoute: typeof AuthenticatedAppUsuariosRoute
+  AuthenticatedAppEtapa1Route: typeof AuthenticatedAppEtapa1Route
+  AuthenticatedAppEtapa2Route: typeof AuthenticatedAppEtapa2Route
+  AuthenticatedAppEtapa3Route: typeof AuthenticatedAppEtapa3Route
+  AuthenticatedAppEtapa4Route: typeof AuthenticatedAppEtapa4Route
+  AuthenticatedAppEtapa5Route: typeof AuthenticatedAppEtapa5Route
+  AuthenticatedAppEtapa6Route: typeof AuthenticatedAppEtapa6Route
+  AuthenticatedAppEtapa7Route: typeof AuthenticatedAppEtapa7Route
 }
 
-const AppRouteChildren: AppRouteChildren = {
-  AppHomeRoute: AppHomeRoute,
-  AppUsuariosRoute: AppUsuariosRoute,
-  AppEtapa1Route: AppEtapa1Route,
-  AppEtapa2Route: AppEtapa2Route,
-  AppEtapa3Route: AppEtapa3Route,
-  AppEtapa4Route: AppEtapa4Route,
-  AppEtapa5Route: AppEtapa5Route,
-  AppEtapa6Route: AppEtapa6Route,
-  AppEtapa7Route: AppEtapa7Route,
+const AuthenticatedAppRouteChildren: AuthenticatedAppRouteChildren = {
+  AuthenticatedAppHomeRoute: AuthenticatedAppHomeRoute,
+  AuthenticatedAppUsuariosRoute: AuthenticatedAppUsuariosRoute,
+  AuthenticatedAppEtapa1Route: AuthenticatedAppEtapa1Route,
+  AuthenticatedAppEtapa2Route: AuthenticatedAppEtapa2Route,
+  AuthenticatedAppEtapa3Route: AuthenticatedAppEtapa3Route,
+  AuthenticatedAppEtapa4Route: AuthenticatedAppEtapa4Route,
+  AuthenticatedAppEtapa5Route: AuthenticatedAppEtapa5Route,
+  AuthenticatedAppEtapa6Route: AuthenticatedAppEtapa6Route,
+  AuthenticatedAppEtapa7Route: AuthenticatedAppEtapa7Route,
 }
 
-const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+const AuthenticatedAppRouteWithChildren =
+  AuthenticatedAppRoute._addFileChildren(AuthenticatedAppRouteChildren)
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAppRoute: typeof AuthenticatedAppRouteWithChildren
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAppRoute: AuthenticatedAppRouteWithChildren,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AppRoute: AppRouteWithChildren,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   EstiloRoute: EstiloRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

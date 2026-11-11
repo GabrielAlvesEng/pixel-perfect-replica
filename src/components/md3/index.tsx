@@ -3,7 +3,7 @@ import { AnimatePresence, animate, motion, useAnimationControls } from "framer-m
 import { Check, Eye, EyeOff, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { springs } from "@/lib/theme";
-import type { Status } from "@/data/mock";
+import type { Status } from "@/lib/types";
 import logoCor from "@/assets/fabriaco-logo-cor.svg.asset.json";
 import logoNeg from "@/assets/fabriaco-logo-negativo.svg.asset.json";
 import simbolo from "@/assets/fabriaco-simbolo.svg.asset.json";
