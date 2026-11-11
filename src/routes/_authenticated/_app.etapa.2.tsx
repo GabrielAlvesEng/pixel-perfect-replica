@@ -275,7 +275,7 @@ function OrgChart({ raizes }: { raizes: Node[] }) {
       <div ref={setBox} className="absolute inset-0 cursor-grab active:cursor-grabbing">
         <motion.div
           drag
-          dragConstraints={box}
+          dragConstraints={box ?? false}
           dragElastic={0.2}
           dragTransition={{ bounceStiffness: 300, bounceDamping: 30 }}
           animate={{ scale: zoom }}
