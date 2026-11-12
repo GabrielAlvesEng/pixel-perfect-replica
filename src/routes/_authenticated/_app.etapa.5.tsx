@@ -155,7 +155,7 @@ function Step5() {
           <span>NOME</span>
           <span className="text-right">L (MM)</span>
           <span className="text-right">A (MM)</span>
-          <span className="text-right">FURROS</span>
+          <span className="text-right">FUROS</span>
           <span className="text-right">QTD</span>
           <span>DXF</span>
           <span />
